@@ -191,22 +191,10 @@ elif st.session_state.tela == "cena1":
             unsafe_allow_html=True
         )
 
-    with col_video:
-        st.markdown(
-            """
-            <div class="fade-in video-card">
-                <h3>Vídeo de boas-vindas</h3>
-                <p class="fala">
-                Olá! Seja muito bem-vindo(a).<br><br>
-                Eu sou Helena, professora de Metodologia da Pesquisa, e acompanharei você durante esta primeira missão.<br><br>
-                Hoje iniciaremos uma investigação em uma escola de Ensino Fundamental I.<br><br>
-                Antes de conversar com estudantes, professores ou gestores, precisamos compreender um aspecto essencial da pesquisa científica: a ética.<br><br>
-                Entre. O Laboratório Virtual está preparado para receber você.
-                </p>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+   with col_avatar:
+    st.markdown("### Profa. Helena")
+    st.video("assets/videos/helena_cena1_sem_audio.mp4")
+    st.caption("Professora de Metodologia da Pesquisa")
 
     st.write("")
     col1, col2, col3 = st.columns([1.2, 1, 1.2])
