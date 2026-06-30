@@ -54,12 +54,6 @@ st.markdown(
         line-height: 1.6;
     }
 
-    .botao-centro {
-        display: flex;
-        justify-content: center;
-        margin-top: 45px;
-    }
-
     div.stButton > button {
         background-color: #111111;
         color: #ffffff;
@@ -83,31 +77,6 @@ st.markdown(
         padding: 30px;
         margin-top: 30px;
         background: linear-gradient(135deg, #0c0c0c, #1a1a1a);
-    }
-
-    .avatar-card {
-        border: 1px solid #444444;
-        border-radius: 18px;
-        padding: 25px;
-        background-color: #111111;
-        text-align: center;
-        min-height: 360px;
-    }
-
-    .avatar {
-        font-size: 90px;
-        margin-bottom: 15px;
-    }
-
-    .nome-avatar {
-        font-size: 24px;
-        font-weight: 700;
-    }
-
-    .funcao-avatar {
-        color: #cccccc;
-        font-size: 16px;
-        margin-top: 8px;
     }
 
     .video-card {
@@ -177,18 +146,18 @@ elif st.session_state.tela == "cena1":
         unsafe_allow_html=True
     )
 
-    col_avatar, col_video = st.columns([1, 2])
+    col_avatar, col_texto = st.columns([1, 2])
 
-  with col_avatar:
-    st.markdown("### Profa. Helena")
-    st.video("assets/videos/helena_cena1_sem_audio.mp4")
-    st.caption("Professora de Metodologia da Pesquisa")
+    with col_avatar:
+        st.markdown("### Profa. Helena")
+        st.video("assets/videos/helena_cena1_sem_audio.mp4")
+        st.caption("Professora de Metodologia da Pesquisa")
 
-  	with col_video:
+    with col_texto:
         st.markdown(
             """
             <div class="fade-in video-card">
-                <h3>Vídeo de boas-vindas</h3>
+                <h3>Mensagem de boas-vindas</h3>
                 <p class="fala">
                 Olá! Seja muito bem-vindo(a).<br><br>
                 Eu sou Helena, professora de Metodologia da Pesquisa, e acompanharei você durante esta primeira missão.<br><br>
