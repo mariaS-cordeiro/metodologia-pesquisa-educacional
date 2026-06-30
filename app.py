@@ -50,14 +50,6 @@ html, body, [class*="css"], .stApp {
     margin-bottom: 8px;
 }
 
-.avatar-centro img {
-    width: 210px;
-    height: 210px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 0 35px rgba(255,255,255,0.16);
-}
-
 .nome {
     text-align: center;
     font-size: 24px;
@@ -94,7 +86,6 @@ div.stButton > button {
 div.stButton > button:hover {
     background-color: #ffffff;
     color: #000000;
-    border: 1px solid #ffffff;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -114,13 +105,12 @@ if st.session_state.tela == "cena1":
         unsafe_allow_html=True
     )
 
+    st.markdown('<div class="avatar-centro">', unsafe_allow_html=True)
+    st.image("assets/imagens/avatar_profa_maria.png", width=220)
+    st.markdown('</div>', unsafe_allow_html=True)
+
     st.markdown(
-        """
-        <div class="avatar-centro">
-            <img src="https://raw.githubusercontent.com/mariaS-cordeiro/metodologia-pesquisa-educacional/main/assets/imagens/avatar_profa_maria.png">
-        </div>
-        <div class="nome">Profa. Maria</div>
-        """,
+        '<div class="nome">Profa. Maria</div>',
         unsafe_allow_html=True
     )
 
