@@ -1,6 +1,5 @@
 import streamlit as st
 import time
-import os
 
 st.set_page_config(
     page_title="Metodologia da Pesquisa Educacional",
@@ -18,41 +17,36 @@ st.markdown("""
 }
 
 .block-container {
-    padding-top: 3rem;
     max-width: 1000px;
+    padding-top: 3rem;
 }
 
 .titulo {
     text-align: center;
     font-size: 34px;
     font-weight: 800;
-    letter-spacing: 1px;
+    margin-bottom: 8px;
 }
 
 .jornada {
     text-align: center;
     font-size: 22px;
     color: #cccccc;
-    margin-top: 10px;
-    margin-bottom: 40px;
+    margin-bottom: 35px;
 }
 
-.avatar-box {
+.avatar-video {
     display: flex;
     justify-content: center;
-    margin-bottom: 25px;
+    margin-bottom: 12px;
 }
 
-.avatar-circle {
-    width: 180px;
-    height: 180px;
+.avatar-video video {
+    width: 190px;
+    height: 190px;
     border-radius: 50%;
-    background: #111111;
-    border: 2px solid #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 82px;
+    object-fit: cover;
+    border: 3px solid #ffffff;
 }
 
 .nome {
@@ -62,15 +56,16 @@ st.markdown("""
     margin-bottom: 25px;
 }
 
-.dialogo {
+.caixa-dialogo {
     background-color: #111111;
-    border: 1px solid #444444;
-    border-radius: 22px;
-    padding: 28px;
+    border: 1px solid #555555;
+    border-radius: 24px;
+    padding: 30px 36px;
     font-size: 23px;
     line-height: 1.7;
-    text-align: left;
-    min-height: 220px;
+    color: #ffffff;
+    min-height: 260px;
+    box-shadow: 0 0 25px rgba(255,255,255,0.08);
 }
 
 div.stButton > button {
@@ -93,7 +88,7 @@ div.stButton > button:hover {
 if "tela" not in st.session_state:
     st.session_state.tela = "cena1"
 
-def fala_lenta(texto, velocidade=0.035):
+def fala_lenta(texto, velocidade=0.03):
     for palavra in texto.split():
         yield palavra + " "
         time.sleep(velocidade)
@@ -104,8 +99,10 @@ if st.session_state.tela == "cena1":
     st.markdown('<div class="jornada">Jornada 1 — Ética na Pesquisa Educacional</div>', unsafe_allow_html=True)
 
     st.markdown("""
-    <div class="avatar-box">
-        <div class="avatar-circle">👩🏾‍🏫</div>
+    <div class="avatar-video">
+        <video autoplay loop muted playsinline>
+            <source src="assets/videos/helena_cena1_sem_audio.mp4" type="video/mp4">
+        </video>
     </div>
     <div class="nome">Profa. Maria</div>
     """, unsafe_allow_html=True)
@@ -126,8 +123,10 @@ if st.session_state.tela == "cena1":
     Vamos começar?
     """
 
-    with st.container():
-        st.markdown('<div class="dialogo">', unsafe_allow_html=True)
+    caixa = st.empty()
+
+    with caixa.container():
+        st.markdown('<div class="caixa-dialogo">', unsafe_allow_html=True)
         st.write_stream(fala_lenta(texto))
         st.markdown('</div>', unsafe_allow_html=True)
 
