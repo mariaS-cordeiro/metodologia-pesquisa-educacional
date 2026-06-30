@@ -1,4 +1,6 @@
 import streamlit as st
+import time
+import os
 
 st.set_page_config(
     page_title="Metodologia da Pesquisa Educacional",
@@ -6,172 +8,136 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-st.markdown(
-    """
-    <style>
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
+st.markdown("""
+<style>
+#MainMenu, header, footer {visibility: hidden;}
 
-    .stApp {
-        background-color: #000000;
-        color: #ffffff;
-    }
+.stApp {
+    background-color: #000000;
+    color: #ffffff;
+}
 
-    .block-container {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-    }
+.block-container {
+    padding-top: 3rem;
+    max-width: 1000px;
+}
 
-    .fade-in {
-        animation: fadeIn 2.5s ease-in;
-    }
+.titulo {
+    text-align: center;
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
 
-    @keyframes fadeIn {
-        0% {opacity: 0; transform: translateY(10px);}
-        100% {opacity: 1; transform: translateY(0);}
-    }
+.jornada {
+    text-align: center;
+    font-size: 22px;
+    color: #cccccc;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
 
-    .titulo {
-        text-align: center;
-        font-size: 44px;
-        font-weight: 800;
-        letter-spacing: 2px;
-        margin-top: 100px;
-    }
+.avatar-box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
 
-    .subtitulo {
-        text-align: center;
-        font-size: 24px;
-        margin-top: 20px;
-        color: #dddddd;
-    }
+.avatar-circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: #111111;
+    border: 2px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 82px;
+}
 
-    .missao {
-        text-align: center;
-        font-size: 30px;
-        margin-top: 60px;
-        line-height: 1.6;
-    }
+.nome {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
 
-    div.stButton > button {
-        background-color: #111111;
-        color: #ffffff;
-        border: 1px solid #ffffff;
-        border-radius: 10px;
-        padding: 0.8rem 2rem;
-        font-size: 18px;
-        font-weight: 600;
-        transition: 0.3s;
-    }
+.dialogo {
+    background-color: #111111;
+    border: 1px solid #444444;
+    border-radius: 22px;
+    padding: 28px;
+    font-size: 23px;
+    line-height: 1.7;
+    text-align: left;
+    min-height: 220px;
+}
 
-    div.stButton > button:hover {
-        background-color: #ffffff;
-        color: #000000;
-        border: 1px solid #ffffff;
-    }
+div.stButton > button {
+    background-color: #111111;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 12px;
+    padding: 0.9rem 2.5rem;
+    font-size: 19px;
+    font-weight: 600;
+}
 
-    .cena-escola {
-        border: 1px solid #333333;
-        border-radius: 18px;
-        padding: 30px;
-        margin-top: 30px;
-        background: linear-gradient(135deg, #0c0c0c, #1a1a1a);
-    }
-
-    .video-card {
-        border: 1px solid #444444;
-        border-radius: 18px;
-        padding: 25px;
-        background-color: #111111;
-        min-height: 360px;
-    }
-
-    .fala {
-        font-size: 20px;
-        line-height: 1.8;
-        color: #f2f2f2;
-    }
-
-    .escola-titulo {
-        font-size: 34px;
-        font-weight: 800;
-        text-align: center;
-    }
-
-    .escola-subtitulo {
-        font-size: 22px;
-        color: #cccccc;
-        text-align: center;
-        margin-bottom: 25px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+div.stButton > button:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+</style>
+""", unsafe_allow_html=True)
 
 if "tela" not in st.session_state:
-    st.session_state.tela = "abertura"
+    st.session_state.tela = "cena1"
 
-if st.session_state.tela == "abertura":
-    st.markdown(
-        """
-        <div class="fade-in">
-            <div class="titulo">METODOLOGIA DA PESQUISA EDUCACIONAL</div>
-            <div class="subtitulo">Laboratório Virtual</div>
-            <div class="missao">
-                MISSÃO 1<br>
-                Ética na Pesquisa Educacional
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+def fala_lenta(texto, velocidade=0.035):
+    for palavra in texto.split():
+        yield palavra + " "
+        time.sleep(velocidade)
+
+if st.session_state.tela == "cena1":
+
+    st.markdown('<div class="titulo">LABORATÓRIO VIRTUAL DE PESQUISA EM EDUCAÇÃO</div>', unsafe_allow_html=True)
+    st.markdown('<div class="jornada">Jornada 1 — Ética na Pesquisa Educacional</div>', unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="avatar-box">
+        <div class="avatar-circle">👩🏾‍🏫</div>
+    </div>
+    <div class="nome">Profa. Maria</div>
+    """, unsafe_allow_html=True)
+
+    texto = """
+    Olá! Seja muito bem-vindo(a).
+
+    Eu sou a Profa. Maria e estarei com você ao longo desta jornada.
+
+    Neste ambiente, você vivenciará situações semelhantes às enfrentadas por pesquisadores(as) da área da Educação.
+
+    Ao longo do percurso, faremos escolhas, analisaremos documentos, conversaremos com diferentes pessoas e refletiremos sobre os desafios que fazem parte do trabalho de um(a) pesquisador(a).
+
+    Toda pesquisa começa com uma pergunta.
+
+    Mas, antes de qualquer investigação, existe algo que precisamos compreender.
+
+    Vamos começar?
+    """
+
+    with st.container():
+        st.markdown('<div class="dialogo">', unsafe_allow_html=True)
+        st.write_stream(fala_lenta(texto))
+        st.markdown('</div>', unsafe_allow_html=True)
 
     st.write("")
     col1, col2, col3 = st.columns([1.2, 1, 1.2])
     with col2:
-        if st.button("▶ Iniciar missão"):
-            st.session_state.tela = "cena1"
+        if st.button("▶ Continuar"):
+            st.session_state.tela = "cena2"
             st.rerun()
 
-elif st.session_state.tela == "cena1":
-    st.markdown(
-        """
-        <div class="fade-in cena-escola">
-            <div class="escola-titulo">Escola Quero Aprender</div>
-            <div class="escola-subtitulo">Ensino Fundamental I</div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    col_avatar, col_texto = st.columns([1, 2])
-
-    with col_avatar:
-        st.markdown("### Profa. Helena")
-        st.video("assets/videos/helena_cena1_sem_audio.mp4")
-        st.caption("Professora de Metodologia da Pesquisa")
-
-    with col_texto:
-        st.markdown(
-            """
-            <div class="fade-in video-card">
-                <h3>Mensagem de boas-vindas</h3>
-                <p class="fala">
-                Olá! Seja muito bem-vindo(a).<br><br>
-                Eu sou Helena, professora de Metodologia da Pesquisa, e acompanharei você durante esta primeira missão.<br><br>
-                Hoje iniciaremos uma investigação em uma escola de Ensino Fundamental I.<br><br>
-                Antes de conversar com estudantes, professores ou gestores, precisamos compreender um aspecto essencial da pesquisa científica: a ética.<br><br>
-                Entre. O Laboratório Virtual está preparado para receber você.
-                </p>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
-    st.write("")
-    col1, col2, col3 = st.columns([1.2, 1, 1.2])
-    with col2:
-        if st.button("▶ Entrar no Laboratório"):
-            st.info("Próxima etapa: Cena 2 – O Laboratório Virtual.")
+elif st.session_state.tela == "cena2":
+    st.markdown("## Cena 2 — O convite")
+    st.info("Aqui construiremos a próxima cena.")
