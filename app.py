@@ -87,7 +87,11 @@ if st.session_state.cena == "cena1":
     col1, col2 = st.columns([1, 2])
 
     with col1:
-        st.image("assets/videos/avatar_profa_maria.png", width=260)
+        st.image(
+    "assets/videos/avatar_profa_maria.png",
+    width=340,
+    use_container_width=False
+)
         st.markdown('<div class="nome">Profa. Maria</div>', unsafe_allow_html=True)
 
     with col2:
